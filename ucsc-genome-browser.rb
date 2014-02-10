@@ -20,6 +20,7 @@ class UcscGenomeBrowser < Formula
     user = `whoami`.chomp
     mkdir prefix/"cgi-bin-#{user}"
     mkdir prefix/"htdocs-#{user}"
+    inreplace "src/hg/js/makefile", "-p --update", "-p"
     cd 'src/lib' do
       system 'make', "MACHTYPE=#{machtype}"
     end
